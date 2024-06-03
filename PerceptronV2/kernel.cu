@@ -1,4 +1,4 @@
-﻿#include "cuda_runtime.h"
+#include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 #include <stdio.h>
 #include <iostream>
@@ -113,6 +113,7 @@ __global__ void backwardKernel(const double* d_input, double* d_weightsInputHidd
 void initializeWeights(vector<double>& weights) {
     for (auto& weight : weights) {
         weight = ((double)rand() / RAND_MAX) * 2 - 1;
+
     }
 }
 
@@ -214,7 +215,7 @@ void trainNetwork(vector<vector<double>>& images, vector<vector<double>>& labels
         cerr << "No se pudo abrir el archivo de precisión para escribir." << endl;
     }
 
-    for (int epoch = 0; epoch < 5; ++epoch) { // Número de épocas
+    for (int epoch = 0; epoch < 1; ++epoch) { // Número de épocas
         for (int i = 0; i < images.size(); ++i) {
             cudaMemcpy(d_input, images[i].data(), inputSize * sizeof(double), cudaMemcpyHostToDevice);
             cudaMemcpy(d_weightsInputHidden, weightsInputHidden.data(), weightsInputHidden.size() * sizeof(double), cudaMemcpyHostToDevice);
@@ -269,14 +270,14 @@ int main() {
     loadMNISTData(training_image_fn, training_label_fn, images, labels, nTraining);
 
     // Archivo para guardar la precisión
-    std::ofstream outFileAccuracy("accuracy_data.txt");
-    if (!outFileAccuracy) {
-        cerr << "No se pudo abrir el archivo de precisión para escribir." << endl;
-        return 1;
-    }
+    //std::ofstream outFileAccuracy("accuracy_data.txt");
+    //if (!outFileAccuracy) {
+        //cerr << "No se pudo abrir el archivo de precisión para escribir." << endl;
+        //return 1;
+    //}
 
     // Entrenar la red y medir la precisión
-    for (int iteration = 1; iteration <= 3; ++iteration) {
+    for (int iteration = 1; iteration <= 1; ++iteration) {
         trainNetwork(images, labels);
         int errors = testing();
         float accuracy = 1.0 - ((float)errors / (float)nTest);
@@ -284,10 +285,10 @@ int main() {
         cout << "Precisión: " << accuracy * 100 << "%" << endl;
         cout << "Error: " << (float)errors / (float)nTest * 100 << "%" << endl;
         cout << "--------------------" << endl;
-        outFileAccuracy << iteration * 60 + 1 << " " << accuracy * 100 << "\n";
+        //outFileAccuracy << iteration * 60 + 1 << " " << accuracy * 100 << "\n";
     }
 
-    outFileAccuracy.close();
+    //outFileAccuracy.close();
 
     // Guardar los pesos entrenados
     ofstream outFile("weights.txt");
