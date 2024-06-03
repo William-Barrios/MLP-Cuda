@@ -1,0 +1,11 @@
+﻿  Compiling CUDA source file kernel.cu...
+  
+  C:\Users\willi\source\repos\PerceptronV2\PerceptronV2>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\include"  -G   --keep-dir x64\Debug  -maxrregcount=0   --machine 64 --compile -cudart static  -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -Xcompiler "/Fdx64\Debug\vc143.pdb" -o C:\Users\willi\source\repos\PerceptronV2\PerceptronV2\x64\Debug\kernel.cu.obj "C:\Users\willi\source\repos\PerceptronV2\PerceptronV2\kernel.cu" 
+  kernel.cu
+  tmpxft_00007004_00000000-7_kernel.cudafe1.cpp
+C:\Users\willi\source\repos\PerceptronV2\PerceptronV2\kernel.cu(179): warning C4244: 'inicializando': conversión de '__int64' a 'int'; posible pérdida de datos
+C:\Users\willi\source\repos\PerceptronV2\PerceptronV2\kernel.cu(180): warning C4244: 'inicializando': conversión de '__int64' a 'int'; posible pérdida de datos
+C:\Users\willi\source\repos\PerceptronV2\PerceptronV2\kernel.cu(238): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\willi\source\repos\PerceptronV2\PerceptronV2\kernel.cu(259): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\willi\source\repos\PerceptronV2\PerceptronV2\kernel.cu(282): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  PerceptronV2.vcxproj -> C:\Users\willi\source\repos\PerceptronV2\x64\Debug\PerceptronV2.exe
